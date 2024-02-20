@@ -44,3 +44,49 @@ console.log(counter.getCount());
 counter.decreament();
 console.log(counter.getCount());
 
+console.log("");
+
+// Closure in Memoization
+function memoize(func){
+	const cache = {};
+
+	return function(...args) {
+		const key = JSON.stringify(args);
+		if (!(key in cache)) {
+			cache[key] = func(...args);
+		}
+		return cache[key];
+	};
+}
+
+const fibonacci = memoize(function(n) {
+	if (n <= 1) return n;
+	return fibonacci(n-1) + fibonacci(n - 2);
+});
+
+console.log(fibonacci(10));
+console.log(fibonacci(11));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
